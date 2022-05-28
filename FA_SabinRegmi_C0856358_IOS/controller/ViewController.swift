@@ -17,6 +17,10 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var turnLabel: UILabel!
     
+    
+    @IBOutlet weak var lblNoughtScore: UILabel!
+    @IBOutlet weak var lblCrossScore: UILabel!
+    
     @IBOutlet var btnList: [UIButton]!
     
     // defining first turn and current turn
@@ -51,6 +55,7 @@ class ViewController: UIViewController {
         
         // :todo We need to load the state from core data
         loadState()
+        
 
     }
     
@@ -136,6 +141,8 @@ class ViewController: UIViewController {
                 }
             }
         }
+        lblCrossScore.text = String(crossesScore)
+        lblNoughtScore.text = String(noughtsScore)
     }
     
     // function to show result alert

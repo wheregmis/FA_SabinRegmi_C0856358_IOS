@@ -165,6 +165,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zFW-iK-iMP">
+                                <rect key="frame" x="42" y="85" width="40" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cuf-hn-S5R">
+                                <rect key="frame" x="345" y="85" width="40" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="U3N-LE-O0c"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -179,6 +193,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="lblCrossScore" destination="zFW-iK-iMP" id="qnO-sf-spb"/>
+                        <outlet property="lblNoughtScore" destination="cuf-hn-S5R" id="rJh-6d-3rj"/>
                         <outlet property="turnLabel" destination="qts-7t-7y5" id="r1f-wX-SQH"/>
                         <outletCollection property="btnList" destination="lh1-uA-BKG" collectionClass="NSMutableArray" id="LRq-Ue-vKV"/>
                         <outletCollection property="btnList" destination="X9Y-cm-DiE" collectionClass="NSMutableArray" id="6GZ-cn-Hwi"/>
@@ -193,7 +209,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P1c-7G-QvH" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="35" y="94"/>
+            <point key="canvasLocation" x="33.644859813084111" y="93.952483801295898"/>
         </scene>
     </scenes>
     <resources>
