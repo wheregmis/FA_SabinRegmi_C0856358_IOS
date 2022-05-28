@@ -72,6 +72,7 @@ class ViewController: UIViewController {
         
     }
     
+    // function to check for victory
     func checkForVictory() {
         for rule in playRules {
             let firstElementOfRule = boardState[rule[0]]
@@ -81,8 +82,7 @@ class ViewController: UIViewController {
             if firstElementOfRule == secondElementOfRule,
                secondElementOfRule == thirdElementOfRule,
                !firstElementOfRule.isEmpty {
-                print("\(firstElementOfRule) is the winner!")
-                // todo: Add Alert
+                
                 
                 // To add score to the players
                 if firstElementOfRule == NOUGHT {
@@ -92,11 +92,11 @@ class ViewController: UIViewController {
                     crossesScore += 1
                     print(crossesScore)
                 }
+                resultAlert(title: "\(firstElementOfRule) is the winner!")
             }
         }
         if !boardState.contains(""){
-            print("Its a tie")
-            // todo: Add Alert
+            resultAlert(title: "This is a tie")
         }
         
     }
@@ -122,15 +122,56 @@ class ViewController: UIViewController {
         }
     }
     
+    // function to load state
+    // todo: Implementation with core data
     func loadState(){
-        for (index, state) in boardState.enumerated() {
-            if state != ""{
-                addToBoard(btnList[index])
+        if boardState.count == 0 {
+            for _ in 0..<btnList.count{
+                boardState.append("")
+            }
+        }else {
+            for (index, state) in boardState.enumerated() {
+                if state != ""{
+                    addToBoard(btnList[index])
+                }
             }
         }
     }
     
+    // function to show result alert
+    func resultAlert(title: String)
+    {
+        let message = "\nNoughts " + String(noughtsScore) + "\n\nCrosses " + String(crossesScore)
+        let ac = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+        ac.addAction(UIAlertAction(title: "Play Again", style: .default, handler: { (_) in
+            self.resetBoard()
+        }))
+        self.present(ac, animated: true)
+    }
 
+    // function to reset board
+    func resetBoard()
+    {
+        for button in btnList
+        {
+            button.setTitle(nil, for: .normal)
+            button.isEnabled = true
+        }
+        if firstTurn == Turn.Nought
+        {
+            firstTurn = Turn.Cross
+            turnLabel.text = CROSS
+        }
+        else if firstTurn == Turn.Cross
+        {
+            firstTurn = Turn.Nought
+            turnLabel.text = NOUGHT
+        }
+        currentTurn = firstTurn
+        
+        boardState = [String]()
+        loadState()
+    }
 
 }
 
