@@ -39,6 +39,8 @@ class ViewController: UIViewController {
     // todo: We will use this list to preserve the state of board using core data
     var boardState = ["", "", "", "", "", "", "", "", ""]
     
+    // defining a variable for lastTapped button so we can undo it in future
+    var lastTapped: UIButton!
     
     //To define the rule for this game / represent the logic of the game
     let playRules = [
@@ -59,19 +61,41 @@ class ViewController: UIViewController {
 
     }
     
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        if motion == .motionShake{
+            if lastTapped != nil {
+                lastTapped.setTitle(nil, for: .normal)
+                let i = btnList.firstIndex(of: lastTapped)!
+                if boardState[i] == "X"{
+                    turnLabel.text = CROSS
+                    currentTurn = Turn.Cross
+                }else if boardState[i] == "O"{
+                    currentTurn = Turn.Nought
+                    turnLabel.text = NOUGHT
+                }
+                boardState[i] = ""
+                lastTapped.setTitle(nil, for: .normal)
+                lastTapped.isEnabled = true
+            }
+        }
+    }
+    
     // function to handle tap in the board
     @IBAction func boardTapHandler(_ sender: UIButton) {
-        addToBoard(sender)
-        
+
         // Create an index to get the index of each buttons
         let i = btnList.firstIndex(of: sender)!
         
         // This is because we have already changed the turn of the user when adding to the board
         if currentTurn == Turn.Cross{
-            boardState[i] = NOUGHT
-        }else{
             boardState[i] = CROSS
+        }else{
+            boardState[i] = NOUGHT
         }
+        
+        addToBoard(sender)
+        
+        lastTapped = sender
         
         checkForVictory()
         
@@ -87,8 +111,6 @@ class ViewController: UIViewController {
             if firstElementOfRule == secondElementOfRule,
                secondElementOfRule == thirdElementOfRule,
                !firstElementOfRule.isEmpty {
-                
-                
                 // To add score to the players
                 if firstElementOfRule == NOUGHT {
                     noughtsScore += 1
@@ -143,6 +165,7 @@ class ViewController: UIViewController {
         }
         lblCrossScore.text = String(crossesScore)
         lblNoughtScore.text = String(noughtsScore)
+        
     }
     
     // function to show result alert
@@ -179,6 +202,8 @@ class ViewController: UIViewController {
         boardState = [String]()
         loadState()
     }
+    
+
 
 }
 
