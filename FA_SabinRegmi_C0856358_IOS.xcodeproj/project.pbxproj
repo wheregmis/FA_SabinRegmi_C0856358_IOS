@@ -15,6 +15,7 @@
 		34B37A6C283F0D1F000317B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34B37A6A283F0D1F000317B7 /* LaunchScreen.storyboard */; };
 		34C2AA372845421000B5A30B /* leaderboard.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 34C2AA352845421000B5A30B /* leaderboard.xcdatamodeld */; };
 		34C2AA392845487200B5A30B /* ScoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C2AA382845487200B5A30B /* ScoreController.swift */; };
+		34C2AA3B284550AB00B5A30B /* StateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C2AA3A284550AB00B5A30B /* StateController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		34B37A6D283F0D1F000317B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		34C2AA362845421000B5A30B /* leaderboard.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = leaderboard.xcdatamodel; sourceTree = "<group>"; };
 		34C2AA382845487200B5A30B /* ScoreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreController.swift; sourceTree = "<group>"; };
+		34C2AA3A284550AB00B5A30B /* StateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 			children = (
 				34B37A63283F0D1E000317B7 /* ViewController.swift */,
 				34C2AA382845487200B5A30B /* ScoreController.swift */,
+				34C2AA3A284550AB00B5A30B /* StateController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -185,6 +188,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				34C2AA392845487200B5A30B /* ScoreController.swift in Sources */,
+				34C2AA3B284550AB00B5A30B /* StateController.swift in Sources */,
 				34B37A64283F0D1E000317B7 /* ViewController.swift in Sources */,
 				34B37A60283F0D1E000317B7 /* AppDelegate.swift in Sources */,
 				34B37A62283F0D1E000317B7 /* SceneDelegate.swift in Sources */,

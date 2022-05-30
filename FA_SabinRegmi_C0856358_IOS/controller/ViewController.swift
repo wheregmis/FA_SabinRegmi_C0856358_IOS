@@ -38,7 +38,7 @@ class ViewController: UIViewController {
     var crossesScore = 0
     
     // todo: We will use this list to preserve the state of board using core data
-    var boardState = ["", "", "", "", "", "", "", "", ""]
+    var boardState = [String]()
     
     // defining a variable for lastTapped button so we can undo it in future
     var lastTapped: UIButton!
@@ -55,6 +55,8 @@ class ViewController: UIViewController {
     // core data
     var savedScores: Score!
     
+    var savedState: State!
+    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
@@ -63,7 +65,14 @@ class ViewController: UIViewController {
         
         savedScores = ScoreController().getScore()
         
-        // :todo We need to load the state from core data
+        savedState = StateController().getState()
+        
+        // appending value of saved state to current board state
+        
+        if savedState.state != nil{
+            let stringAsData = savedState.state!.data(using: String.Encoding.utf16)
+            boardState = try! JSONDecoder().decode([String].self, from: stringAsData!)
+        }
         loadState()
         
         // calling left swipe gesture function
@@ -108,6 +117,9 @@ class ViewController: UIViewController {
         addToBoard(sender)
         
         lastTapped = sender
+        
+        savedState.state = boardState.description
+        StateController().updateState()
         
         checkForVictory()
         
@@ -173,6 +185,8 @@ class ViewController: UIViewController {
             for _ in 0..<btnList.count{
                 boardState.append("")
             }
+            savedState.state = boardState.description
+            StateController().updateState()
         }else {
             for (index, state) in boardState.enumerated() {
                 if state != ""{
@@ -238,6 +252,9 @@ class ViewController: UIViewController {
             self.resetBoard()
             noughtsScore = 0;
             crossesScore = 0;
+            savedScores.x = String(crossesScore)
+            savedScores.o = String(noughtsScore)
+            ScoreController().updateScore()
             loadState()
         }
     }
