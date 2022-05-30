@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		344283C2284534C7001CD08E /* ticktactoe.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 344283C0284534C7001CD08E /* ticktactoe.xcdatamodeld */; };
 		34B37A60283F0D1E000317B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B37A5F283F0D1E000317B7 /* AppDelegate.swift */; };
 		34B37A62283F0D1E000317B7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B37A61283F0D1E000317B7 /* SceneDelegate.swift */; };
 		34B37A64283F0D1E000317B7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B37A63283F0D1E000317B7 /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		344283C1284534C7001CD08E /* ticktactoe.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ticktactoe.xcdatamodel; sourceTree = "<group>"; };
 		34B37A5C283F0D1E000317B7 /* FA_SabinRegmi_C0856358_IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FA_SabinRegmi_C0856358_IOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34B37A5F283F0D1E000317B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		34B37A61283F0D1E000317B7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -40,6 +42,7 @@
 		34B37A53283F0D1E000317B7 = {
 			isa = PBXGroup;
 			children = (
+				344283C0284534C7001CD08E /* ticktactoe.xcdatamodeld */,
 				34B37A5E283F0D1E000317B7 /* FA_SabinRegmi_C0856358_IOS */,
 				34B37A5D283F0D1E000317B7 /* Products */,
 			);
@@ -180,6 +183,7 @@
 			files = (
 				34B37A64283F0D1E000317B7 /* ViewController.swift in Sources */,
 				34B37A60283F0D1E000317B7 /* AppDelegate.swift in Sources */,
+				344283C2284534C7001CD08E /* ticktactoe.xcdatamodeld in Sources */,
 				34B37A62283F0D1E000317B7 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -396,6 +400,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		344283C0284534C7001CD08E /* ticktactoe.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				344283C1284534C7001CD08E /* ticktactoe.xcdatamodel */,
+			);
+			currentVersion = 344283C1284534C7001CD08E /* ticktactoe.xcdatamodel */;
+			path = ticktactoe.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 34B37A54283F0D1E000317B7 /* Project object */;
 }
