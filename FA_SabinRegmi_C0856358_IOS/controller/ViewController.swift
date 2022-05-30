@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewController: UIViewController {
     
@@ -51,15 +52,24 @@ class ViewController: UIViewController {
                 // rule for diagonal victory
                 [0,4,8],[2,4,6]]
     
+    // core data
+    var savedScores: Score!
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        savedScores = ScoreController().getScore()
         
         // :todo We need to load the state from core data
         loadState()
         
         // calling left swipe gesture function
         addLeftSwipeGesture()
+        
+        
 
     }
     
@@ -109,18 +119,23 @@ class ViewController: UIViewController {
             let firstElementOfRule = boardState[rule[0]]
             let secondElementOfRule = boardState[rule[1]]
             let thirdElementOfRule = boardState[rule[2]]
-
+            
             if firstElementOfRule == secondElementOfRule,
                secondElementOfRule == thirdElementOfRule,
                !firstElementOfRule.isEmpty {
                 // To add score to the players
                 if firstElementOfRule == NOUGHT {
                     noughtsScore += 1
-                    print(noughtsScore)
                 } else if firstElementOfRule == CROSS {
                     crossesScore += 1
-                    print(crossesScore)
                 }
+                
+                savedScores.x = String(crossesScore)
+                savedScores.o = String(noughtsScore)
+                
+                // updating the score in core data
+                ScoreController().updateScore()
+            
                 resultAlert(title: "\(firstElementOfRule) is the winner!")
             }
         }
@@ -165,9 +180,12 @@ class ViewController: UIViewController {
                 }
             }
         }
+        
+        crossesScore = Int(savedScores.x ?? "0") ?? 0
+        noughtsScore = Int(savedScores.o ?? "0") ?? 0
+        
         lblCrossScore.text = String(crossesScore)
         lblNoughtScore.text = String(noughtsScore)
-        
     }
     
     // function to show result alert
@@ -223,7 +241,6 @@ class ViewController: UIViewController {
             loadState()
         }
     }
-
-
+    
 }
 
