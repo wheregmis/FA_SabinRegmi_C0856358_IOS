@@ -58,6 +58,8 @@ class ViewController: UIViewController {
         // :todo We need to load the state from core data
         loadState()
         
+        // calling left swipe gesture function
+        addLeftSwipeGesture()
 
     }
     
@@ -203,6 +205,24 @@ class ViewController: UIViewController {
         loadState()
     }
     
+    //function for swiping left to reset gesture
+    func addLeftSwipeGesture() {
+        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeGesture))
+        leftSwipe.direction = .left
+        view.addGestureRecognizer(leftSwipe)
+    }
+    
+    @objc func swipeGesture(gesture: UISwipeGestureRecognizer)
+    {
+        let swipeGesture = gesture as UISwipeGestureRecognizer
+        if swipeGesture.direction == .left{
+            print("Left Swipe")
+            self.resetBoard()
+            noughtsScore = 0;
+            crossesScore = 0;
+            loadState()
+        }
+    }
 
 
 }
