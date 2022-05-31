@@ -10,11 +10,13 @@ import UIKit
 import CoreData
 
 class ScoreController{
+    
+    // defining the variables needed for core data to manage score
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var coreScore: Score!
     
+    // function to get score from core data
     func getScore() -> Score?{
-       
         let request: NSFetchRequest<Score> = Score.fetchRequest()
         do {
             let scores = try context.fetch(request)
@@ -31,6 +33,7 @@ class ScoreController{
         return nil;
     }
     
+    // function to update score from core data
     func updateScore(){
         do {
             try context.save()
